@@ -9,9 +9,10 @@ import withMutationProps from 'universal/utils/relay/withMutationProps';
 import {Route, Switch, withRouter} from 'react-router-dom';
 import styled from 'react-emotion';
 import {Helmet} from 'react-helmet';
-import NewMeetingSidebar from 'universal/components/NewMeetingSidebar';
 import MeetingAvatarGroup from 'universal/modules/meeting/components/MeetingAvatarGroup/MeetingAvatarGroup';
 import NewMeetingLobby from 'universal/components/NewMeetingLobby';
+import NewMeetingPhaseHeading from 'universal/components/NewMeetingPhaseHeading/NewMeetingPhaseHeading';
+import NewMeetingSidebar from 'universal/components/NewMeetingSidebar';
 
 import type {MeetingTypeEnum, NewMeetingPhaseTypeEnum} from 'universal/types/schema.flow';
 import type {NewMeeting_viewer as Viewer} from './__generated__/NewMeeting_viewer.graphql';
@@ -35,7 +36,6 @@ const MeetingArea = styled('div')({
 const MeetingAreaHeader = styled('div')({
   alignItems: 'flex-start',
   display: 'flex',
-  flexDirection: 'row-reverse',
   flexWrap: 'wrap',
   justifyContent: 'space-between',
   maxWidth: '100%',
@@ -61,6 +61,7 @@ const NewMeeting = (props: Props) => {
       <NewMeetingSidebar localPhase={localPhase} viewer={viewer} />
       <MeetingArea>
         <MeetingAreaHeader>
+          <NewMeetingPhaseHeading />
           <MeetingAvatarGroup
             gotoItem={() => {}}
             isFacilitating={false}
