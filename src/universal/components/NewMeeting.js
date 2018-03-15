@@ -13,6 +13,7 @@ import MeetingAvatarGroup from 'universal/modules/meeting/components/MeetingAvat
 import NewMeetingLobby from 'universal/components/NewMeetingLobby';
 import NewMeetingPhaseHeading from 'universal/components/NewMeetingPhaseHeading/NewMeetingPhaseHeading';
 import NewMeetingSidebar from 'universal/components/NewMeetingSidebar';
+import RetroReflectPhase from 'universal/components/RetroReflectPhase/RetroReflectPhase';
 
 import type {MeetingTypeEnum, NewMeetingPhaseTypeEnum} from 'universal/types/schema.flow';
 import type {NewMeeting_viewer as Viewer} from './__generated__/NewMeeting_viewer.graphql';
@@ -71,6 +72,10 @@ const NewMeeting = (props: Props) => {
           />
         </MeetingAreaHeader>
         <Switch>
+          <Route
+            path="/retro/:teamId/reflect"
+            component={RetroReflectPhase}
+          />
           <Route
             path={`/${meetingTypeToSlug[meetingType]}/:teamId`}
             render={() => <NewMeetingLobby meetingType={meetingType} team={team} />}
